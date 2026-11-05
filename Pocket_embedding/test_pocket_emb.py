@@ -26,18 +26,7 @@ def collate_fn(samples):
     
     
 class GraphDataset(Dataset):
-    def __init__(self, annotated_path):
-        self.path = annotated_path
-        self.all_graphs = sorted([f for f in os.listdir(annotated_path) if f.endswith('.p')])
-        self.edge_map = {
-    'B53': 0,
-    'cHS': 1,
-    'cWH': 2,
-    'cWS': 3,
-    'tHS': 4,
-    'tWH': 5,
-    'tWS': 6}
-        self.n = len(self.all_graphs)
+
 
     def __len__(self):
         return self.n
@@ -64,7 +53,18 @@ class GraphDataset(Dataset):
         g_dgl.from_networkx(nx_graph=graph, node_attrs=['feat'], edge_attrs=['type'])
         g_dgl.title = self.all_graphs[idx]
         return g_dgl, self.all_graphs[idx]
-
+    def __init__(self, annotated_path):
+        self.path = annotated_path
+        self.all_graphs = sorted([f for f in os.listdir(annotated_path) if f.endswith('.p')])
+        self.edge_map = {
+    'B53': 0,
+    'cHS': 1,
+    'cWH': 2,
+    'cWS': 3,
+    'tHS': 4,
+    'tWH': 5,
+    'tWS': 6}
+        self.n = len(self.all_graphs)
     def _get_edge_data(self):
         edge_counts = Counter()
         for fname in self.all_graphs:
@@ -76,7 +76,7 @@ class GraphDataset(Dataset):
 
 def extract_embeddings(model_path, graph_dir, output_dir, out_csv, device='cpu'):
     device = torch.device(device)
-    model_dict = torch.load(model_path)
+    model_dict = torch.load(model_path, map_location=device)
     model = Model(dims=[16,16,16], device=device, num_rels=7)
     model.load_state_dict(model_dict['model_state_dict'])
     model = model.to(device)
@@ -118,6 +118,6 @@ if __name__ == '__main__':
 
         output_dir = '/ZHMolRSI/example/6HAG/pocket_emb/model_pocket_emb_out',
         out_csv='6HAG_poc_emb.csv',
-        device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+        device = 'cpu'
     )
 

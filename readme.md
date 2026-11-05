@@ -37,15 +37,14 @@ conda create -n RSI_p python=3.6.13 -y
 conda activate RSI_p
 
 pip install numpy==1.19.5
-
 conda install pytorch=1.9.1 cpuonly \
     "mkl<2024.1" "intel-openmp<2024.1" \
     -c pytorch -y
-
 pip install tensorboard==2.2.2
 pip install dgl==0.4.3
 pip install seaborn==0.10.1
 pip install tqdm==4.64.1
+pip install biopython
 ```
 
 **(2) Interface Module and Capsule Fusion Module**
@@ -57,18 +56,18 @@ conda create -n RSI_i python=3.10 -y
 conda activate RSI_i
 
 pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1
-
 pip install pandas
 pip install biopython
 pip install scipy
 conda install -c conda-forge rdkit -y
 pip install torch_geometric
-
 pip install pyg_lib-0.4.0+pt24cu121-cp310-cp310-linux_x86_64.whl
 pip install torch_cluster-1.6.3+pt24cu121-cp310-cp310-linux_x86_64.whl
 pip install torch_scatter-2.1.2+pt24cu121-cp310-cp310-linux_x86_64.whl
 pip install scikit-learn
 pip install tensorboard
+pip install openpyxl
+conda install -c conda-forge pymol-open-source
 ```
 
 **Note:** The PyTorch Geometric extension wheels are built for Python 3.10, PyTorch 2.4.1, and CUDA 12.1 on Linux x86_64. Make sure the corresponding wheel files are available in your working directory before installation.

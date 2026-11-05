@@ -20,7 +20,7 @@ import warnings
 from threading import Lock
 
 import config
-from model import GNN_inter
+from model import GNN
 from tqdm import tqdm
 my_lock = Lock()     
 RDLogger.DisableLog('rdApp.*')
@@ -128,7 +128,7 @@ if __name__ == '__main__':
     graph_dataset = GraphDataset(data_dir, data_df, graph_type='ZHMolRSI', dis_threshold=10, create=False)
 
 
-    model = GNN_inter(33,128).to(DEVICE)                  
+    model = GNN(33,128).to(DEVICE)                  
     model.load_state_dict(torch.load(model_path, map_location=DEVICE))
     model.eval()
 

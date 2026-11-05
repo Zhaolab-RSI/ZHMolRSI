@@ -11,8 +11,7 @@ from capsule_affi import FusionCapsuleRegression
 
 
 
-Y_MIN = 2.508638306
-Y_MAX = 10.95860731
+
 
 BATCH_SIZE = 128
 
@@ -23,16 +22,17 @@ MODEL_DIR = "./model"
 RECURSIVE_MODEL_SEARCH = True
 
 
-TEST_POC = "./rdock_pose/RSI_a12_r_poc.csv"         
-TEST_INTER = "./rdock_pose/RSI_a12_r_inter.csv"    
-TEST_SE = "./rdock_pose/RSI_a12_r_se.csv"           
-TEST_LABEL = "./rdock_pose/RSI_a12_r_label.csv"   
+TEST_POC = "./rdock_pose/RSI_a2_r_poc.csv"         
+TEST_INTER = "./rdock_pose/RSI_a2_r_inter.csv"    
+TEST_SE = "./rdock_pose/RSI_a2_r_se.csv"           
+TEST_LABEL = "./rdock_pose/RSI_a2_r_label.csv"   
 
 
 
 OUTPUT_DIR = "./pre_rdock_result"
 
-
+Y_MIN = 2.508638306
+Y_MAX = 10.95860731
 METRICS_FILE = os.path.join(
     OUTPUT_DIR,
     "all_result_metrics.csv"
