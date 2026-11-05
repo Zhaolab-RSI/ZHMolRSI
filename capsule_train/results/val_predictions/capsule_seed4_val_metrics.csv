@@ -1,0 +1,2 @@
+model_name,model_file,val_predictions_file,val_metrics_file,best_epoch,best_val_loss,val_rmse,val_mae,gate_poc_rgcn,gate_inter_gnn,gate_se,routing_poc_rgcn,routing_inter_gnn,routing_se,status
+capsule_seed4,./results/models/capsule_seed4.pth,./results/val_predictions/capsule_seed4_val_predictions.csv,./results/val_predictions/capsule_seed4_val_metrics.csv,49,0.041047610342502594,0.20260209856391564,0.16998097,0.3325963,0.33301428,0.33438945,0.3812435269355774,0.3821403682231903,0.23661619424819946,OK
