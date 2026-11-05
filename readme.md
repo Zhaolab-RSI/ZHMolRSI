@@ -108,7 +108,7 @@ The ZHMolRSI framework consists of three main representation modules and two dow
 Run the following scripts:
 
 ```bash
-python ./Pocket_embedding/build_annotator/mian_pocket_emb.py
+python ./Pocket_embedding/build_annotator/main_pocket_emb.py
 
 python ./Pocket_embedding/test_pocket_emb.py
 ```
